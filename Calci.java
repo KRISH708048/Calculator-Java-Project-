@@ -16,8 +16,8 @@ public class Calci {
 
 class CalculatorA extends JFrame implements ActionListener{
 	ArrayList<JButton> b;
-	static int op1=-1;
-	static int op2=-1;
+	static float op1=-1;
+	static float op2=-1;
 	static float res;
 	static String c;
 	JLabel result;
@@ -74,16 +74,14 @@ class CalculatorA extends JFrame implements ActionListener{
 					else if(c.equals("-")) {
 						res = op1-op2;
 					}
-					
+					op1=res;
+					op2=-1;
 				}
 				else if(cur.getText().equals("C")) {
 					res =0;
 					op1=-1;
 					op2=-1;
 					c=null;
-					System.out.println(op1);
-					System.out.println(op2);
-					System.out.println(c);
 				}
 				else {
 					c = cur.getText();
@@ -96,7 +94,11 @@ class CalculatorA extends JFrame implements ActionListener{
 			result.setText(c);
 			f=0;
 		}
-		else
+		else {
+			
 			result.setText(String.valueOf(res));
+			
+		}
+			
 	}
 }
